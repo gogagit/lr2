@@ -1,0 +1,74 @@
+.root-pane {
+    -fx-background-color: linear-gradient(to bottom, #09111c, #0f1a2b);
+    -fx-font-family: "Segoe UI";
+}
+
+.top-panel, .bottom-panel {
+    -fx-background-color: rgba(8, 15, 26, 0.92);
+    -fx-border-color: #26374d;
+}
+
+.viewer-panel {
+    -fx-background-color: #0c1523;
+    -fx-border-color: #31455f;
+    -fx-border-width: 1;
+}
+
+.title-label {
+    -fx-text-fill: #e7edf7;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.info-label, .counter-label, .path-label {
+    -fx-text-fill: #d8e1ef;
+    -fx-font-size: 14px;
+}
+
+.path-label {
+    -fx-text-fill: #99a8bd;
+}
+
+.primary-button, .secondary-button, .player-button {
+    -fx-background-color: #1f6feb;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.secondary-button {
+    -fx-background-color: #42556d;
+}
+
+.player-button {
+    -fx-min-width: 72;
+    -fx-min-height: 42;
+    -fx-font-size: 15px;
+}
+
+.primary-button:hover, .secondary-button:hover, .player-button:hover {
+    -fx-opacity: 0.92;
+}
+
+.combo-box, .text-field {
+    -fx-background-color: #111d2e;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #8fa2bb;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #1f6feb;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #142132;
+}
+
+.emotion-label {
+    -fx-text-fill: white;
+    -fx-font-size: 46px;
+    -fx-padding: 8 14 8 14;
+    -fx-background-color: rgba(0, 0, 0, 0.45);
+    -fx-background-radius: 18;
+}

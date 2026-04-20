@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.photogallery.controllers.GalleryController"
+            styleClass="root-pane">
+
+    <top>
+        <VBox spacing="12" styleClass="top-panel">
+            <children>
+                <Label text="Альбом впечатлений" styleClass="title-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <children>
+                        <Button text="Выбрать папку" onAction="#onChooseFolder" styleClass="primary-button"/>
+                        <ComboBox fx:id="formatSelector" onAction="#onFormatChanged" prefWidth="120"/>
+                        <Label text="Интервал (мс):" styleClass="info-label"/>
+                        <TextField fx:id="intervalInput" prefWidth="100"/>
+                        <Button text="Применить" onAction="#onApplyInterval" styleClass="secondary-button"/>
+                    </children>
+                </HBox>
+                <Label fx:id="folderLabel" text="Папка не выбрана" styleClass="path-label" wrapText="true"/>
+            </children>
+            <padding>
+                <Insets top="16" right="18" bottom="16" left="18"/>
+            </padding>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane styleClass="viewer-panel">
+            <children>
+                <ImageView fx:id="displayArea" fitWidth="980" fitHeight="560" preserveRatio="true"/>
+                <Label fx:id="emotionLabel" styleClass="emotion-label" StackPane.alignment="BOTTOM_RIGHT"/>
+            </children>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+        </StackPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="14" styleClass="bottom-panel">
+            <children>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Реакция:" styleClass="info-label"/>
+                        <ComboBox fx:id="emotionSelector" onAction="#onEmotionChanged" prefWidth="180"/>
+                        <Label fx:id="counterLabel" text="Нет слайдов" styleClass="counter-label"/>
+                    </children>
+                </HBox>
+                <ProgressBar fx:id="progressBar" prefWidth="980" progress="0.0"/>
+                <HBox spacing="14" alignment="CENTER">
+                    <children>
+                        <Button fx:id="prevButton" text="◀" onAction="#onPreviousClick" styleClass="player-button"/>
+                        <Button fx:id="playButton" text="▶" onAction="#onStartSlideshow" styleClass="player-button"/>
+                        <Button fx:id="stopButton" text="■" onAction="#onStopSlideshow" styleClass="player-button" disable="true"/>
+                        <Button fx:id="nextButton" text="▶▶" onAction="#onNextClick" styleClass="player-button"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="14" right="18" bottom="18" left="18"/>
+            </padding>
+        </VBox>
+    </bottom>
+</BorderPane>
