@@ -1,10 +1,12 @@
 .root-pane {
     -fx-background-color: linear-gradient(to bottom, #09111c, #0f1a2b);
     -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
 }
 
-.top-panel, .bottom-panel {
-    -fx-background-color: rgba(8, 15, 26, 0.92);
+.top-panel,
+.bottom-panel {
+    -fx-background-color: rgba(8, 15, 26, 0.95);
     -fx-border-color: #26374d;
 }
 
@@ -16,26 +18,32 @@
 
 .title-label {
     -fx-text-fill: #e7edf7;
-    -fx-font-size: 28px;
+    -fx-font-size: 23px;
     -fx-font-weight: bold;
+    -fx-padding: 0 14 0 0;
 }
 
-.info-label, .counter-label, .path-label {
+.info-label,
+.counter-label,
+.path-label {
     -fx-text-fill: #d8e1ef;
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
 }
 
 .path-label {
     -fx-text-fill: #99a8bd;
 }
 
-.primary-button, .secondary-button, .player-button {
+.primary-button,
+.secondary-button,
+.player-button {
     -fx-background-color: #1f6feb;
     -fx-text-fill: white;
-    -fx-background-radius: 8;
+    -fx-background-radius: 6;
     -fx-cursor: hand;
     -fx-font-weight: bold;
-    -fx-padding: 8 12 8 12;
+    -fx-font-size: 12px;
+    -fx-padding: 5 9 5 9;
 }
 
 .secondary-button {
@@ -43,23 +51,45 @@
 }
 
 .player-button {
-    -fx-min-width: 72;
-    -fx-min-height: 42;
-    -fx-font-size: 15px;
+    -fx-min-width: 38;
+    -fx-min-height: 28;
+    -fx-font-size: 12px;
+    -fx-padding: 4 8 4 8;
 }
 
-.primary-button:hover, .secondary-button:hover, .player-button:hover {
+.primary-button:hover,
+.secondary-button:hover,
+.player-button:hover {
     -fx-opacity: 0.92;
 }
 
-.combo-box, .text-field, .text-area {
+.combo-box,
+.text-field,
+.text-area {
     -fx-background-color: #111d2e;
     -fx-text-fill: white;
     -fx-prompt-text-fill: #8fa2bb;
+    -fx-background-radius: 5;
+}
+
+.combo-box {
+    -fx-pref-height: 28;
+}
+
+.text-field {
+    -fx-pref-height: 28;
+}
+
+.text-area {
+    -fx-font-size: 12px;
 }
 
 .text-area .content {
     -fx-background-color: #111d2e;
+}
+
+.progress-bar {
+    -fx-pref-height: 14;
 }
 
 .progress-bar > .bar {
@@ -72,25 +102,25 @@
 
 .emotion-label {
     -fx-text-fill: white;
-    -fx-font-size: 46px;
-    -fx-padding: 8 14 8 14;
+    -fx-font-size: 34px;
+    -fx-padding: 5 10 5 10;
     -fx-background-color: rgba(0, 0, 0, 0.45);
-    -fx-background-radius: 18;
+    -fx-background-radius: 14;
 }
 
 .overlay-text-label {
     -fx-text-fill: white;
-    -fx-font-size: 30px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-padding: 8 18 8 18;
+    -fx-padding: 6 14 6 14;
     -fx-background-color: rgba(0, 0, 0, 0.50);
-    -fx-background-radius: 14;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.65), 8, 0.4, 0, 2);
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 7, 0.4, 0, 2);
 }
 
 .sticker-label {
-    -fx-font-size: 74px;
-    -fx-padding: 8 14 8 14;
+    -fx-font-size: 56px;
+    -fx-padding: 6 12 6 12;
     -fx-background-color: rgba(0, 0, 0, 0.20);
-    -fx-background-radius: 30;
+    -fx-background-radius: 24;
 }

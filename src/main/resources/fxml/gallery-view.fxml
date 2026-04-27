@@ -19,37 +19,47 @@
             styleClass="root-pane">
 
     <top>
-        <VBox spacing="12" styleClass="top-panel">
+        <VBox spacing="6" styleClass="top-panel">
             <children>
-                <Label text="Альбом впечатлений" styleClass="title-label"/>
 
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <HBox spacing="8" alignment="CENTER_LEFT">
                     <children>
-                        <Button text="Выбрать папку" onAction="#onChooseFolder" styleClass="primary-button"/>
-                        <Button text="Открыть альбом" onAction="#onLoadAlbum" styleClass="secondary-button"/>
-                        <Button text="Сохранить альбом" onAction="#onSaveAlbum" styleClass="secondary-button"/>
-                        <Button text="Сохранить слайд PNG" onAction="#onSaveCurrentSlide" styleClass="secondary-button"/>
+                        <Label text="Альбом впечатлений" styleClass="title-label"/>
+
+                        <Button text="Папка" onAction="#onChooseFolder" styleClass="primary-button"/>
+                        <Button text="Открыть" onAction="#onLoadAlbum" styleClass="secondary-button"/>
+                        <Button text="Сохр. альбом" onAction="#onSaveAlbum" styleClass="secondary-button"/>
+                        <Button text="PNG" onAction="#onSaveCurrentSlide" styleClass="secondary-button"/>
                     </children>
                 </HBox>
 
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <HBox spacing="7" alignment="CENTER_LEFT">
                     <children>
                         <Label text="Формат:" styleClass="info-label"/>
-                        <ComboBox fx:id="formatSelector" onAction="#onFormatChanged" prefWidth="120"/>
-                        <Label text="Интервал (мс):" styleClass="info-label"/>
-                        <TextField fx:id="intervalInput" prefWidth="90"/>
-                        <Button text="Применить" onAction="#onApplyInterval" styleClass="secondary-button"/>
+                        <ComboBox fx:id="formatSelector" onAction="#onFormatChanged" prefWidth="95"/>
+
+                        <Label text="Интервал:" styleClass="info-label"/>
+                        <TextField fx:id="intervalInput" prefWidth="70"/>
+
+                        <Button text="OK" onAction="#onApplyInterval" styleClass="secondary-button"/>
+
                         <Label text="Анимация:" styleClass="info-label"/>
-                        <ComboBox fx:id="animationSelector" prefWidth="175"/>
-                        <Label text="Длительность:" styleClass="info-label"/>
-                        <TextField fx:id="animationDurationInput" prefWidth="80"/>
+                        <ComboBox fx:id="animationSelector" prefWidth="145"/>
+
+                        <Label text="Длит.:" styleClass="info-label"/>
+                        <TextField fx:id="animationDurationInput" prefWidth="65"/>
                     </children>
                 </HBox>
 
-                <Label fx:id="folderLabel" text="Папка не выбрана" styleClass="path-label" wrapText="true"/>
+                <Label fx:id="folderLabel"
+                       text="Папка не выбрана"
+                       styleClass="path-label"
+                       wrapText="true"/>
+
             </children>
+
             <padding>
-                <Insets top="16" right="18" bottom="16" left="18"/>
+                <Insets top="8" right="10" bottom="8" left="10"/>
             </padding>
         </VBox>
     </top>
@@ -57,72 +67,112 @@
     <center>
         <StackPane fx:id="slidePane" styleClass="viewer-panel">
             <children>
-                <ImageView fx:id="displayArea" fitWidth="980" fitHeight="500" preserveRatio="true"/>
-                <Label fx:id="overlayTextLabel" styleClass="overlay-text-label" wrapText="true" maxWidth="760" StackPane.alignment="TOP_CENTER"/>
-                <Label fx:id="stickerLabel" styleClass="sticker-label" StackPane.alignment="CENTER"/>
-                <Label fx:id="emotionLabel" styleClass="emotion-label" StackPane.alignment="BOTTOM_RIGHT"/>
+                <ImageView fx:id="displayArea"
+                           fitWidth="900"
+                           fitHeight="385"
+                           preserveRatio="true"/>
+
+                <Label fx:id="overlayTextLabel"
+                       styleClass="overlay-text-label"
+                       wrapText="true"
+                       maxWidth="680"
+                       StackPane.alignment="TOP_CENTER"/>
+
+                <Label fx:id="stickerLabel"
+                       styleClass="sticker-label"
+                       StackPane.alignment="CENTER"/>
+
+                <Label fx:id="emotionLabel"
+                       styleClass="emotion-label"
+                       StackPane.alignment="BOTTOM_RIGHT"/>
             </children>
+
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets top="8" right="10" bottom="8" left="10"/>
             </padding>
         </StackPane>
     </center>
 
     <bottom>
-        <VBox spacing="12" styleClass="bottom-panel">
+        <VBox spacing="6" styleClass="bottom-panel">
             <children>
-                <HBox spacing="12" alignment="CENTER_LEFT">
+
+                <HBox spacing="7" alignment="CENTER_LEFT">
                     <children>
                         <Label text="Реакция:" styleClass="info-label"/>
-                        <ComboBox fx:id="emotionSelector" onAction="#onEmotionChanged" prefWidth="180"/>
-                        <Label text="Текст на слайде:" styleClass="info-label"/>
-                        <TextField fx:id="overlayInput" prefWidth="260" promptText="Напись поверх изображения"/>
+                        <ComboBox fx:id="emotionSelector"
+                                  onAction="#onEmotionChanged"
+                                  prefWidth="145"/>
+
+                        <Label text="Текст:" styleClass="info-label"/>
+                        <TextField fx:id="overlayInput"
+                                   prefWidth="230"
+                                   promptText="Надпись на слайде"/>
+
                         <Label text="Стикер:" styleClass="info-label"/>
-                        <ComboBox fx:id="stickerSelector" prefWidth="90"/>
+                        <ComboBox fx:id="stickerSelector" prefWidth="75"/>
+
                         <Label text="Рисунок:" styleClass="info-label"/>
-                        <ComboBox fx:id="shapeSelector" prefWidth="130"/>
-                        <Button text="Прикрепить к слайду" onAction="#onApplyOverlay" styleClass="secondary-button"/>
+                        <ComboBox fx:id="shapeSelector" prefWidth="105"/>
+
+                        <Button text="Прикрепить" onAction="#onApplyOverlay" styleClass="secondary-button"/>
                     </children>
                 </HBox>
 
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <HBox spacing="7" alignment="CENTER_LEFT">
                     <children>
                         <Label text="Заметка:" styleClass="info-label"/>
-                        <TextArea fx:id="noteArea" prefRowCount="2" prefWidth="780" promptText="Заметка хранится именно у текущего слайда"/>
-                        <Button text="Сохранить заметку" onAction="#onSaveNote" styleClass="secondary-button"/>
+
+                        <TextArea fx:id="noteArea"
+                                  prefRowCount="2"
+                                  prefHeight="44"
+                                  prefWidth="690"
+                                  promptText="Заметка хранится именно у текущего слайда"/>
+
+                        <Button text="Сохранить" onAction="#onSaveNote" styleClass="secondary-button"/>
                     </children>
                 </HBox>
 
-                <HBox spacing="14" alignment="CENTER_LEFT">
+                <HBox spacing="8" alignment="CENTER_LEFT">
                     <children>
-                        <Label fx:id="counterLabel" text="Нет слайдов" styleClass="counter-label"/>
-                        <ProgressBar fx:id="progressBar" prefWidth="760" progress="0.0"/>
-                    </children>
-                </HBox>
+                        <Label fx:id="counterLabel"
+                               text="Нет слайдов"
+                               styleClass="counter-label"
+                               minWidth="135"/>
 
-                <HBox spacing="14" alignment="CENTER">
-                    <children>
-                        <Button fx:id="prevButton" text="◀" onAction="#onPreviousClick" styleClass="player-button"/>
+                        <ProgressBar fx:id="progressBar"
+                                     prefWidth="360"
+                                     progress="0.0"/>
+
+                        <Button text="◀" onAction="#onPreviousClick" styleClass="player-button"/>
                         <Button fx:id="playButton" text="▶" onAction="#onStartSlideshow" styleClass="player-button"/>
                         <Button fx:id="stopButton" text="■" onAction="#onStopSlideshow" styleClass="player-button" disable="true"/>
-                        <Button fx:id="nextButton" text="▶▶" onAction="#onNextClick" styleClass="player-button"/>
-                        <Button text="Слайд левее" onAction="#onMoveSlideLeft" styleClass="secondary-button"/>
-                        <Button text="Слайд правее" onAction="#onMoveSlideRight" styleClass="secondary-button"/>
+                        <Button text="▶▶" onAction="#onNextClick" styleClass="player-button"/>
+
+                        <Button text="Левее" onAction="#onMoveSlideLeft" styleClass="secondary-button"/>
+                        <Button text="Правее" onAction="#onMoveSlideRight" styleClass="secondary-button"/>
                     </children>
                 </HBox>
 
-                <HBox spacing="12" alignment="CENTER_LEFT">
+                <HBox spacing="8" alignment="CENTER_LEFT">
                     <children>
-                        <Button text="Выбрать музыку" onAction="#onChooseMusic" styleClass="secondary-button"/>
-                        <Button text="Играть музыку" onAction="#onPlayMusic" styleClass="secondary-button"/>
-                        <Button text="Стоп музыка" onAction="#onStopMusic" styleClass="secondary-button"/>
-                        <Label fx:id="musicLabel" text="Музыка не выбрана" styleClass="path-label"/>
+                        <Button text="Музыка" onAction="#onChooseMusic" styleClass="secondary-button"/>
+                        <Button text="Играть" onAction="#onPlayMusic" styleClass="secondary-button"/>
+                        <Button text="Стоп" onAction="#onStopMusic" styleClass="secondary-button"/>
+
+                        <Label fx:id="musicLabel"
+                               text="Музыка не выбрана"
+                               styleClass="path-label"
+                               wrapText="true"/>
                     </children>
                 </HBox>
+
             </children>
+
             <padding>
-                <Insets top="14" right="18" bottom="18" left="18"/>
+                <Insets top="8" right="10" bottom="8" left="10"/>
             </padding>
         </VBox>
     </bottom>
+
 </BorderPane>
