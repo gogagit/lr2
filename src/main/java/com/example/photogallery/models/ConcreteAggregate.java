@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +26,13 @@ public class ConcreteAggregate implements Aggregate {
         this.filetop = normalizeExtension(filetop);
         this.reactionFactory = reactionFactory;
         loadFiles();
+    }
+
+    public ConcreteAggregate(List<Path> savedOrder, ReactionFactory reactionFactory) {
+        this.rootDirectory = null;
+        this.filetop = "*";
+        this.reactionFactory = reactionFactory;
+        loadSavedOrder(savedOrder);
     }
 
     private String normalizeExtension(String extension) {
@@ -62,6 +70,28 @@ public class ConcreteAggregate implements Aggregate {
             imagePaths.clear();
         }
 
+        rebuildMediaItems();
+    }
+
+    private void loadSavedOrder(List<Path> savedOrder) {
+        imagePaths.clear();
+        mediaItems.clear();
+
+        if (savedOrder == null) {
+            return;
+        }
+
+        for (Path path : savedOrder) {
+            if (path != null && Files.exists(path) && Files.isRegularFile(path) && matchesFormat(path)) {
+                imagePaths.add(path);
+            }
+        }
+
+        rebuildMediaItems();
+    }
+
+    private void rebuildMediaItems() {
+        mediaItems.clear();
         for (int index = 0; index < imagePaths.size(); index++) {
             mediaItems.add(reactionFactory.createMediaItem(imagePaths.get(index), index + 1));
         }
@@ -103,7 +133,27 @@ public class ConcreteAggregate implements Aggregate {
         if (index < 0 || index >= imagePaths.size()) {
             return;
         }
-        mediaItems.set(index, factory.createMediaItem(imagePaths.get(index), index + 1));
+
+        MediaItem previous = mediaItems.get(index);
+        MediaItem updated = factory.createMediaItem(imagePaths.get(index), index + 1);
+        updated.copyUserContentFrom(previous);
+        mediaItems.set(index, updated);
+    }
+
+    public int moveItem(int fromIndex, int toIndex) {
+        if (fromIndex < 0 || fromIndex >= mediaItems.size()) {
+            return fromIndex;
+        }
+        if (toIndex < 0 || toIndex >= mediaItems.size()) {
+            return fromIndex;
+        }
+        if (fromIndex == toIndex) {
+            return fromIndex;
+        }
+
+        Collections.swap(imagePaths, fromIndex, toIndex);
+        Collections.swap(mediaItems, fromIndex, toIndex);
+        return toIndex;
     }
 
     public List<Path> getImagePaths() {
@@ -150,6 +200,14 @@ public class ConcreteAggregate implements Aggregate {
         }
 
         @Override
+        public Object current() {
+            if (mediaItems.isEmpty() || current < 0 || current >= mediaItems.size()) {
+                return null;
+            }
+            return mediaItems.get(current);
+        }
+
+        @Override
         public void reset() {
             current = -1;
         }
@@ -157,6 +215,21 @@ public class ConcreteAggregate implements Aggregate {
         @Override
         public int getCurrentIndex() {
             return current;
+        }
+
+        @Override
+        public void setCurrentIndex(int index) {
+            if (mediaItems.isEmpty()) {
+                current = -1;
+                return;
+            }
+            if (index < 0) {
+                current = 0;
+            } else if (index >= mediaItems.size()) {
+                current = mediaItems.size() - 1;
+            } else {
+                current = index;
+            }
         }
     }
 }

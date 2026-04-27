@@ -35,6 +35,7 @@
     -fx-background-radius: 8;
     -fx-cursor: hand;
     -fx-font-weight: bold;
+    -fx-padding: 8 12 8 12;
 }
 
 .secondary-button {
@@ -51,10 +52,14 @@
     -fx-opacity: 0.92;
 }
 
-.combo-box, .text-field {
+.combo-box, .text-field, .text-area {
     -fx-background-color: #111d2e;
     -fx-text-fill: white;
     -fx-prompt-text-fill: #8fa2bb;
+}
+
+.text-area .content {
+    -fx-background-color: #111d2e;
 }
 
 .progress-bar > .bar {
@@ -71,4 +76,21 @@
     -fx-padding: 8 14 8 14;
     -fx-background-color: rgba(0, 0, 0, 0.45);
     -fx-background-radius: 18;
+}
+
+.overlay-text-label {
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18 8 18;
+    -fx-background-color: rgba(0, 0, 0, 0.50);
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.65), 8, 0.4, 0, 2);
+}
+
+.sticker-label {
+    -fx-font-size: 74px;
+    -fx-padding: 8 14 8 14;
+    -fx-background-color: rgba(0, 0, 0, 0.20);
+    -fx-background-radius: 30;
 }

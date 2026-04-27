@@ -17,7 +17,7 @@ public class GalleryApp extends Application {
         }
 
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
-        Scene scene = new Scene(loader.load(), 1180, 820);
+        Scene scene = new Scene(loader.load(), 1240, 940);
 
         URL cssUrl = getClass().getResource("/css/gallery.css");
         if (cssUrl != null) {

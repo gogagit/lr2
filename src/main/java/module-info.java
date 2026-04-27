@@ -1,6 +1,7 @@
 module com.example.photogallery {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
     opens com.example.photogallery.controllers to javafx.fxml;
     opens com.example.photogallery.models to javafx.base;

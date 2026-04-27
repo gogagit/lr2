@@ -15,7 +15,8 @@ public interface ReactionFactory {
                 createMainImage(imagePath),
                 createAnimatedEffect(imagePath, position),
                 createDescription(imagePath, position),
-                createReactionEmoji()
+                createReactionEmoji(),
+                imagePath
         );
     }
 }
